@@ -14,6 +14,7 @@ import Demo12 from "./Demo12_LocalStorage_UseEffect/Demo12";
 import Demo13 from "./Demo13_UseContext_Example/Demo13";
 import Demo14 from "./Demo14_IsLoading_UseEffect/Demo14";
 import Demo15 from "./Demo15_Simple_UseEffect/Demo15";
+import Demo16 from "./Demo16_Material_UI/Demo16";
 
 class LinkInfo {
   constructor(path, title, component) {
@@ -40,6 +41,7 @@ const menuList = [
   new LinkInfo("/Demo13", "Demo13_UseContext_Example", Demo13),
   new LinkInfo("/Demo14", "Demo14_IsLoading_UseEffect", Demo14),
   new LinkInfo("/Demo15", "Demo15_Simple_UseEffect", Demo15),
+  new LinkInfo("/Demo16", "Demo16_Material_UI", Demo16)
 ];
 
 export default menuList;
