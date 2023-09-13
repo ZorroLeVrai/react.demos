@@ -13,6 +13,8 @@ export default function Demo8() {
   };
 
   const handleFilterChange = (e) => {
+    //filter next value = e.target.value
+    //need to render the component
     setFilter(e.target.value);
   };
 
@@ -22,7 +24,7 @@ export default function Demo8() {
 
   return (
     <>
-      <div style={{ display: "none" }}>
+      <div style={{ display: "block" }}>
         <label htmlFor="filterItems">Filter</label>
         <input id="filterItems" onChange={handleFilterChange} type="text" />
         <br />

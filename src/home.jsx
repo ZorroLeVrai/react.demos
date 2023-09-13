@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
+import menuList from "./menu";
 
 export default function Home() {
-  const nbExercises = 13;
-  const exerciseList = [...Array(nbExercises).keys()].map((i) => i + 1);
-
   return (
     <>
       <h1>Home page</h1>
       <ul>
-        {exerciseList.map((index) => (
-          <li key={index}>
-            <Link to={`/Demo${index}`}>Demo {index}</Link>
+        {menuList.map((it) => (
+          <li key={it.path}>
+            <Link to={it.path}>{it.title}</Link>
           </li>
         ))}
       </ul>

@@ -1,5 +1,10 @@
 export default function useGetData(url, params, mapFunc, onDataReceived) {
   const handleData = data => {
+    if (!mapFunc) {
+      onDataReceived(data);
+      return;
+    }
+
     const mappedData = data.map(item => mapFunc(item));
     onDataReceived(mappedData);
   }

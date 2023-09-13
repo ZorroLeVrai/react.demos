@@ -3,10 +3,10 @@ import React, { useRef } from "react";
 const FormRefHook = () => {
   const nameRef = useRef(null);
   const ageRef = useRef(null);
-  const person = { name: "", age: 0 };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const person = { name: "", age: 0 };
     if (nameRef.current !== null) person.name = nameRef.current.value;
     if (ageRef.current !== null) person.age = Number(ageRef.current.value);
     console.log(person);

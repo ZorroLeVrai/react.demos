@@ -4,7 +4,7 @@ import FilterList from "./Components/FilterList";
 import AddItem from "./Components/AddItem";
 import AddItemsFromServer from "./Components/AddItemsFromServer";
 
-export default function Demo10() {
+export default function Demo10_2() {
   const [myList, setMyList] = useState([]);
   const [filter, setFilter] = useState("");
 
@@ -13,7 +13,7 @@ export default function Demo10() {
   };
 
   const handleSetItems = (newItems) => {
-    setMyList((currentList) => [...newItems]);
+    setMyList([...newItems]);
   };
 
   const handleFilterChange = (e) => {
