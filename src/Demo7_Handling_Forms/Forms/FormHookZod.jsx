@@ -14,40 +14,48 @@ const FormHookZod = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({ resolver: zodResolver(schema) });
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">
-          Name
-        </label>
-        <input
-          {...register("name")}
-          id="name"
-          type="text"
-          className="form-control"
-        />
-        {errors.name && <p className="text-danger">{errors.name.message}</p>}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="age" className="form-label">
-          Age
-        </label>
-        <input
-          {...register("age", { valueAsNumber: true })}
-          id="age"
-          type="number"
-          className="form-control"
-        />
-        {errors.age && <p className="text-danger">{errors.age.message}</p>}
-      </div>
-      <button disabled={!isValid} className="btn btn-primary" type="submit">
-        Submit
-      </button>
-    </form>
+    <>
+      <div>Form using a useForm & Zod schema validation</div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
+          <input
+            {...register("name")}
+            id="name"
+            type="text"
+            className="form-control"
+          />
+          {errors.name && <p className="text-danger">{errors.name.message}</p>}
+        </div>
+        <div className="mb-3">
+          <label htmlFor="age" className="form-label">
+            Age
+          </label>
+          <input
+            {...register("age", { valueAsNumber: true })}
+            id="age"
+            type="number"
+            className="form-control"
+          />
+          {errors.age && <p className="text-danger">{errors.age.message}</p>}
+        </div>
+        <button disabled={!isValid} className="btn btn-primary" type="submit">
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
 
