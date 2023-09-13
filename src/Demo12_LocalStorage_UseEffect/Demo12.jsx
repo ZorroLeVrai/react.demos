@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useGetData from "./Hooks/useGetData";
 import ListItems from "./Components/ListItems";
 import { SERVER_URL } from "./constants";
@@ -6,38 +6,32 @@ import { SERVER_URL } from "./constants";
 export default function Demo12() {
   const POST_ID_LOCAL_STORAGE_KEY = "CommentsPostId";
   const [myList, setMyList] = useState([]);
-  const [postIdInput, setPostIdInput] = useState("");
-  const currentPostId = useRef(null);
+  const [postIdInput, setPostIdInput] = useState(() => {
+    //getting data from local storage
+    return localStorage.getItem(POST_ID_LOCAL_STORAGE_KEY);
+  });
 
   const onReceivedData = (dataList) => {
     setMyList(dataList);
   };
 
   const handleChange = (e) => {
-    currentPostId.current = e.target.value;
     setPostIdInput(e.target.value);
   };
 
-  //useEffect handling local storage
-  useEffect(() => {
-    //getting data from local storage
-    const storedPostId = localStorage.getItem(POST_ID_LOCAL_STORAGE_KEY);
-    currentPostId.current = storedPostId;
-    setPostIdInput(storedPostId);
-  }, []);
-
-  //useEffect handling server requests
+  //useEffect handling server requests and setting local storage
   useEffect(() => {
     //setting data in local storage
-    localStorage.setItem(POST_ID_LOCAL_STORAGE_KEY, currentPostId.current);
+    localStorage.setItem(POST_ID_LOCAL_STORAGE_KEY, postIdInput);
 
-    if (currentPostId.current === "") {
+    //send request to the server
+    if (postIdInput === "") {
       useGetData(SERVER_URL, null, (it) => it.name, onReceivedData);
     } else {
       try {
         useGetData(
           SERVER_URL,
-          { postId: currentPostId.current },
+          { postId: postIdInput },
           (it) => it.name,
           onReceivedData
         );
