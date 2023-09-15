@@ -15,11 +15,10 @@ import Demo12 from "./Demo12_LocalStorage_UseEffect/Demo12";
 import Demo13 from "./Demo13_UseContext_Example/Demo13";
 import Demo14 from "./Demo14_IsLoading_UseEffect/Demo14";
 import Demo15 from "./Demo15_Simple_UseEffect/Demo15";
-import Demo16 from "./Demo16_Material_UI/Demo16";
-import Demo17 from "./Demo17_React_memo/Demo17";
-//import Demo18 from "./Demo18_Custom_Hook/Demo18";
 
 //lazy import
+const Demo16 = lazy(() => import("./Demo16_Material_UI/Demo16"));
+const Demo17 = lazy(() => import("./Demo17_React_memo/Demo17"));
 const Demo18 = lazy(() => import("./Demo18_Custom_Hook/Demo18"));
 
 class LinkInfo {
