@@ -10,13 +10,11 @@ export default function Demo11() {
   const [myList, setMyList] = useState([]);
   const [filter, setFilter] = useState("");
 
-  useEffect(() => {
-    useGetData(
-      SERVER_URL,
-      (e) => e.name,
-      (lst) => setMyList(lst)
-    );
-  }, []);
+  useGetData(
+    SERVER_URL,
+    (e) => e.name,
+    (lst) => setMyList(lst)
+  );
 
   const handleNewItem = (newItem) => {
     setMyList((currentList) => [...currentList, newItem]);

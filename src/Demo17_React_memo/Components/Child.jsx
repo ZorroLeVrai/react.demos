@@ -23,5 +23,5 @@ function Child({ title }) {
   );
 }
 
-export default Child;
-//export default React.memo(Child);
+//export default Child;
+export default React.memo(Child);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Child from "./Child";
 
 export default function Parent() {
@@ -12,11 +12,11 @@ export default function Parent() {
 
   const simpleVal = 42;
 
-  const objectVal = { value: 42 };
+  const objectVal = useMemo(() => ({ value: simpleVal }), [simpleVal]);
 
-  const cbFunction = () => {
+  const cbFunction = useCallback(() => {
     console.log("Callback function called");
-  };
+  }, []);
 
   return (
     <>
@@ -24,8 +24,8 @@ export default function Parent() {
       <button onClick={() => setDummyState((state) => !state)}>
         {buttonLabel}
       </button>
-      <Child title="Child n°1" />
-      <Child title="Child n°2" />
+      <Child title="Child n°1" fakeProp={objectVal} />
+      <Child title="Child n°2" fakeProp={cbFunction} />
     </>
   );
 }
