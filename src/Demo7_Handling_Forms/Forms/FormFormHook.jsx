@@ -6,6 +6,8 @@ const FormFormHook = () => {
   const errorType = formState.errors.name?.type;
   const onSubmit = (data) => console.log(data);
 
+  console.log(formState.errors);
+
   return (
     <>
       <div>Form using a simple useForm hook</div>

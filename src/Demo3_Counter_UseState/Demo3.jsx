@@ -8,20 +8,22 @@ export default function Demo3() {
   const [counterState, setCounterState] = useState({ counter: 0, step: 1 });
 
   const incrementCounter = () =>
-    setCounterState({
-      ...counterState,
+    setCounterState((currentState) => ({
+      ...currentState,
       counter: counterState.counter + counterState.step,
-    });
+    }));
 
   const decrementCounter = () =>
-    setCounterState({
-      ...counterState,
+    setCounterState((currentState) => ({
+      ...currentState,
       counter: counterState.counter - counterState.step,
-    });
+    }));
 
-  const initCounter = () => setCounterState({ ...counterState, counter: 0 });
+  const initCounter = () =>
+    setCounterState((currentState) => ({ ...currentState, counter: 0 }));
 
-  const changeStep = (val) => setCounterState({ ...counterState, step: val });
+  const changeStep = (val) =>
+    setCounterState((currentState) => ({ ...currentState, step: val }));
 
   return (
     <>
