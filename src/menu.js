@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import Demo1 from "./Demo1_Input_Text/Demo1";
 import Demo2 from "./Demo2_ListGroup/Demo2";
 import Demo3 from "./Demo3_Counter_UseState/Demo3";
@@ -16,7 +17,10 @@ import Demo14 from "./Demo14_IsLoading_UseEffect/Demo14";
 import Demo15 from "./Demo15_Simple_UseEffect/Demo15";
 import Demo16 from "./Demo16_Material_UI/Demo16";
 import Demo17 from "./Demo17_React_memo/Demo17";
-import Demo18 from "./Demo18_Custom_Hook/Demo18";
+//import Demo18 from "./Demo18_Custom_Hook/Demo18";
+
+//lazy import
+const Demo18 = lazy(() => import("./Demo18_Custom_Hook/Demo18"));
 
 class LinkInfo {
   constructor(path, title, component) {
